@@ -13,6 +13,11 @@ pipeline{
               sh "mvn test"
             }
         }
+            stage('Mutation Tests - PIT') {
+             steps {
+                sh "mvn org.pitest:pitest-maven:mutationCoverage"
+            }
+        }
 
        
 
