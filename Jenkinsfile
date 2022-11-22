@@ -10,7 +10,7 @@ pipeline{
 
         stage("Jacoco test"){
             steps{
-              sh "mvn test"
+              sh "mvn test-1"
             }
         }
 
