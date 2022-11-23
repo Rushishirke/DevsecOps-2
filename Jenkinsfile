@@ -21,7 +21,7 @@ pipeline{
 
         stage("Docker build and push"){
             steps{
-              withDockerRegistry{([credentialsId: "675662b93503", url: "localhost:5000"])
+              withDockerRegistry{([credentialsId: "root", url: "localhost:5000"])
                    sh 'printenv'
                     sh 'sudo docker build -t sush24:""$GIT_COMMIT"" .'  
                     sh 'docker push sush24/numeric-app:""$GIT_COMMIT""'
