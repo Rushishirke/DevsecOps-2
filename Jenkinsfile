@@ -19,7 +19,15 @@ pipeline{
             }
         }
 
-       
+       stage("Docker build and push"){
+            steps{
+              withDockerRegistry{([credentialsId: "docker-ID", url: ""])
+                   sh 'printenv'
+                    sh 'sudo docker build -t rushi:""$GIT_COMMIT"" .'  
+                    sh 'docker push rushi/numeric-app:""$GIT_COMMIT""'
+              }
+            }
+        }
 
     }
 }
