@@ -25,6 +25,11 @@ pipeline{
                    sh 'printenv'
                     sh 'sudo docker build -t rushi:""$GIT_COMMIT"" .'  
                     sh 'docker push localhost:5000/myfirstimage]:""$GIT_COMMIT""'
+              }
+            }          
 
+        }
     }
-}
+}      
+    
+
