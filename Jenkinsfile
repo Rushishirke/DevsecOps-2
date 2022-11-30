@@ -25,7 +25,7 @@ pipeline{
                   sh 'docker build -t devsecops .'
                   sh 'docker image list'
                   sh 'docker tag devsecops rushikesh8284/rushi828:devsecops'
-                  org.jenkinsci.plugins.plaincredentials.StringCredentials([(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+                  org.jenkinsci.plugins.plaincredentials.StringCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
                   sh 'docker login -u rushikesh8284 -p Rushi@123'
                   }
             }
