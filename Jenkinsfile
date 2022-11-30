@@ -25,7 +25,7 @@ pipeline{
                   sh 'docker build -t devsecops .'
                   sh 'docker image list'
                   sh 'docker tag devsecops Rushikesh8284/rushi8284:devsecops'
-                  withDockerRegistry{([(credentialsId: 'DOCKER_HUB_PASSWORD', url: '')]) 
+                  withDockerRegistry{([credentialsId: 'DOCKER_HUB_PASSWORD', url: '']) 
                   sh 'docker push Rushikesh8284/devsecops:1.0'
                   }
             }
