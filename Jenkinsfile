@@ -25,18 +25,18 @@ pipeline{
                   sh 'docker build -t devsecops .'
                   sh 'docker image list'
                   sh 'docker tag devsecops Rushikesh8284/rushi8284:devsecops'
-                  withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
-                  sh 'docker login -u Rushikesh8284 -p Rushi@123'
+                  withDockerRegistry([(credentialsId: 'DOCKER_HUB_PASSWORD', url: '')]) {
+                  docker push Rushikesh8284/devsecops:1.0
                   }
-             }
-             }
+            }
+        }
              stage("Push Image to Docker Hub"){
                 steps{
                sh 'docker push Rushikesh8284/rushi8284:devsecops'
-               }
+            }
         
              
-             }
+        }
     }
 }      
     
