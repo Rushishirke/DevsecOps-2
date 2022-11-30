@@ -25,15 +25,14 @@ pipeline{
                   sh 'docker build -t devsecops .'
                   sh 'docker image list'
                   sh 'docker tag devsecops rushikesh8284/rushi828:devsecops'
-                  StringCredential([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
-                  sh 'docker login -u rushikesh8284 -p Rushi@123'
+                  withDockerRegistry{([credentialsId: 'DOCKER_HUB_PASSWORD', url: '']) 
                   }
             }
         }
              stage("Push Image to Docker Hub"){
                 steps{
                sh 'docker push rushikesh8284/rushi8284:devsecops'
-            }
+           }
         
         
              
