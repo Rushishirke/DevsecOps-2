@@ -18,7 +18,11 @@ pipeline{
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
             }
         }
-        
+        stage("sonarqube"){
+            steps{
+                sh "sonarqube analysis"
+            }
+        }
         stage("Docker build"){ 
             steps{
               sh 'docker version'
